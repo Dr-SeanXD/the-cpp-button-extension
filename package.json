@@ -2,27 +2,37 @@
   "name": "the-c---button",
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
-  "description": "An extension to compile and run C++ files",
-  "version": "0.0.2",
+  "description": "An extension to compile + run multiple C++ and Java files",
+  "version": "1.0.0",
   "engines": {
     "vscode": "^1.94.0"
   },
   "main": "./extension.js",
   "activationEvents": [
-  "onCommand:the-c---button.button"
+  "onCommand:the-c---button.cpp",
+  "onCommand:the-c---button.java"
   ],
   "contributes": {
     "commands": [
       {
-        "command": "the-c---button.button",
+        "command": "the-c---button.cpp",
         "title": "🚀 Run C++ 💻"
+      },
+      {
+        "command": "the-c---button.java",
+        "title": "🚀 Run Java 💻"
       }
     ],
     "menus": {
       "editor/title": [
         {
-          "command": "the-c---button.button",
+          "command": "the-c---button.cpp",
           "when": "resourceExtname == .cpp",
+          "group": "navigation"
+        },
+        {
+          "command": "the-c---button.java",
+          "when": "resourceExtname == .java",
           "group": "navigation"
         }
       ]
