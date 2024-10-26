@@ -1,4 +1,4 @@
-# the-c---button README
+# The C++ Button README
 
 🚀 The C++ Button is a simple VS Code extension that provides a quick way to compile and run all .cpp files in your current workspace folder. Perfect for C++ developers looking to speed up their workflow!
 
