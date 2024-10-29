@@ -12,6 +12,8 @@
 
 - **Error Handling**: Displays compilation and runtime errors directly in VS Code.
 
+- **Header Comment Generation**: Easily add a standardized header comment to your code files, including fields for author name, creation date, file name, project name, and a description.
+
 ## Usage
 
 ### C++ Code
@@ -26,6 +28,16 @@
 2. Ensure one of your Java files contains the `public static void main(String[] args)` method.
 3. Use the Command Palette (Cmd+Shift+P or Ctrl+Shift+P) and search for 🚀 Run Java ☕ to compile and run your Java program.
 4. Alternatively, click the Run Java button in the editor title when viewing a `.java` file.
+
+### Adding Header Comments
+
+1. Open the file you want to add a header comment to.
+2. Use the Command Palette (Cmd+Shift+P or Ctrl+Shift+P) and search for "📜 Generate Header" to insert a header comment at the top of your code file.
+3. You can customize the author name through the extension settings.
+
+## Customization
+
+- To change the author name for header comments, go to **File > Preferences > Settings** (or press `Ctrl (Cmd) + ,`), then search for "The C++ Button Configuration" and update the **Author Name** setting.
 
 ## Requirements
 

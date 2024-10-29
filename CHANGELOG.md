@@ -1,5 +1,19 @@
 # Changelog
 
+## [1.1.0] - 2024-10-28
+### Added
+- **Customizable Author Name**: Users can specify the author name in the extension settings for inclusion in header comments.
+- **Header Comment Generation**: Introduced a feature to add a standardized header comment at the top of code files, including fields for:
+  - Author Name
+  - Date Created
+  - File Name
+  - Project Name
+  - Description
+
+### Changed
+- Updated the README.md to include instructions for the new header comment generation feature and author name customization.
+
+
 ## [1.0.1] - 2024-10-28
 ### Added
 - Added a section in the changelog to keep track of future changes.

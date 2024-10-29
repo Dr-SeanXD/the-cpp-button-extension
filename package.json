@@ -3,14 +3,15 @@
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
   "description": "An extension to compile + run multiple C++ and Java files",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "engines": {
     "vscode": "^1.94.0"
   },
   "main": "./extension.js",
   "activationEvents": [
   "onCommand:the-c---button.cpp",
-  "onCommand:the-c---button.java"
+  "onCommand:the-c---button.java",
+  "onCommand:the-c---button.generate-header"
   ],
   "contributes": {
     "commands": [
@@ -21,8 +22,23 @@
       {
         "command": "the-c---button.java",
         "title": "🚀 Run Java 💻"
+      },
+      {
+        "command": "the-c---button.generate-header",
+        "title": "📜 Generate Header"
       }
     ],
+    "configuration": {
+          "type": "object",
+          "title": "The C++ Button Configuration",
+          "properties": {
+              "the-c++-button.authorName": {
+                  "type": "string",
+                  "default": "Enter your name!",
+                  "description": "The author name to include in header comments."
+              }
+          }
+      },
     "menus": {
       "editor/title": [
         {
