@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.0] - 2024-10-29
+
+### Changed
+- Fix the issue of running C++.
+
+
 ## [1.1.0] - 2024-10-28
 ### Added
 - **Customizable Author Name**: Users can specify the author name in the extension settings for inclusion in header comments.

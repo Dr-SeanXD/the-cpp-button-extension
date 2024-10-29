@@ -99,12 +99,10 @@ function runCpp(folderPath) {
 
     const terminal = vscode.window.createTerminal("C++ Terminal");
 
-    const outputFilePath = "/tmp/a.out";
-
     terminal.show(true);
     terminal.sendText(`clear`);
-    terminal.sendText(`g++ ${folderPath}/*.cpp -o ${outputFilePath}`);
-    terminal.sendText(`${outputFilePath}`);
+    terminal.sendText(`g++ ${folderPath}/*.cpp`);
+    terminal.sendText(`./a.out`);
 }
 
 function runJava (folderPath) {
