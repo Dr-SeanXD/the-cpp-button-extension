@@ -6,7 +6,7 @@
 
 - **Compile and Run C++ Files**: With a single click or command, compile all `.cpp` files in the current workspace and run the main program.
 
-- **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program.
+- **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program. The compiled `.class` files will be stored in a "build" folder created in your workspace.
 
 - **Custom Button**: Adds a custom button in the editor for `.cpp` and `.java` files, allowing fast access to compilation and execution.
 

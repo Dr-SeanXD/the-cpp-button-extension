@@ -1,6 +1,15 @@
 # Changelog
 
-## [1.1.0] - 2024-10-29
+## [1.1.2] - 2024-10-30
+
+### Added
+- When compiling java programs, the `.class` files generated will now be stored into a "build" folder (automatically created) instead of being next to the `.java` files in the workspace.
+
+### Changed
+- Update the README.md to let users know their compiled java files (.class) will be stored in a created folder called "build."
+
+
+## [1.1.1] - 2024-10-29
 
 ### Changed
 - Fix the issue of running C++.

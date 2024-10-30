@@ -114,14 +114,20 @@ function runJava (folderPath) {
         return;
     }
 
+    const buildFolderPath = path.join(folderPath, 'build');
+
+    if (!fs.existsSync(buildFolderPath)) {
+        fs.mkdirSync(buildFolderPath, { recursive: true });
+    }
+
     const terminal = vscode.window.createTerminal("Java Terminal");
 
     terminal.show(true);
     terminal.sendText(`clear`);
+    
+    terminal.sendText(`javac -d "${buildFolderPath}" ${folderPath}/*.java`);
 
-    terminal.sendText(`cd "${folderPath}"`);
-    terminal.sendText(`javac *.java`, true);
-    terminal.sendText(`java ${mainClass}`, true);
+    terminal.sendText(`java -cp "${buildFolderPath}" ${mainClass}`);
 }
 
 function checkEditor() {
