@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.3] - 2024-10-30
+
+### Changed
+- Add "TODO: " in front of the default message of @Project when calling the command `📜 Generate Header`.
+
+
 ## [1.1.2] - 2024-10-30
 
 ### Added

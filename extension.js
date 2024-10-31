@@ -57,7 +57,7 @@ function addHeaderComment() {
     const author = config.get('authorName') || "Enter Your Name!";
     const dateCreated = addDate;
     const fileName = path.basename(filePath);
-    const project = "Your Project Name Here"; // Customize this as needed
+    const project = "TODO: Your Project Name Here"; // Customize this as needed
     const description = "TODO: Add a brief description of the file."; // Placeholder for the description
 
     // Construct the header comment
