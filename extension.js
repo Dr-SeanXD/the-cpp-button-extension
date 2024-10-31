@@ -54,7 +54,7 @@ function addHeaderComment() {
 
     const config = vscode.workspace.getConfiguration('the-c++-button');
     const filePath = editor.document.uri.fsPath; // Get the file path from the active editor
-    const author = config.get('authorName') || "Enter Your Name!";
+    const author = config.get('authorName') || "TODO: Enter Your Name!";
     const dateCreated = addDate;
     const fileName = path.basename(filePath);
     const project = "TODO: Your Project Name Here"; // Customize this as needed
@@ -152,7 +152,15 @@ function activate(context) {
     let exeJava = vscode.commands.registerCommand("the-c---button.java", () => {
         if (!checkEditor) return;
 
-        runJava(vscode.workspace.workspaceFolders[0].uri.fsPath);
+        const config = vscode.workspace.getConfiguration('the-c++-button');
+
+        if (config.get("saveAllBeforeRunJava")) {
+            vscode.workspace.saveAll().then(() => {
+                runJava(vscode.workspace.workspaceFolders[0].uri.fsPath);
+            });
+        }
+        else runJava(vscode.workspace.workspaceFolders[0].uri.fsPath);
+        
     });
 
     let generateHeader = vscode.commands.registerCommand("the-c---button.generate-header", () => {

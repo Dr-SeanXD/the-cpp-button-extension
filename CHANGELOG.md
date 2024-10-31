@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.1.4] - 2024-10-31
+
+### Added
+- Add the in the settings of whether to automatically save all files when running the command `🚀 Run Java 💻`.
+
+### Changed
+- Add "TODO: " in front of the default message of @Author when calling the command `📜 Generate Header` if the author in the setting is not specified.
+
+
 ## [1.1.3] - 2024-10-30
 
 ### Changed
