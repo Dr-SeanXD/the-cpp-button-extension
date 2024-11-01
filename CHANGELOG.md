@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.1.5] - 2024-10-31
+
+### Added
+- Add the in the settings of whether to automatically save all files when running the command `🚀 Run C++ 💻`.
+
+
 ## [1.1.4] - 2024-10-31
 
 ### Added

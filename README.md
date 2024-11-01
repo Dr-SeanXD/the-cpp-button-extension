@@ -4,7 +4,7 @@
 
 ## Features
 
-- **Compile and Run C++ Files**: With a single click or command, compile all `.cpp` files in the current workspace and run the main program.
+- **Compile and Run C++ Files**: With a single click or command, compile all `.cpp` files in the current workspace and run the main program, saving all files before compiling.
 
 - **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program, saving all files before compiling. The compiled `.class` files will be stored in a "build" folder created in your workspace.
 

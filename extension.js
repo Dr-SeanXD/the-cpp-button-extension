@@ -146,7 +146,14 @@ function activate(context) {
     let disposable = vscode.commands.registerCommand("the-c---button.cpp", () => {
         if (!checkEditor) return;
 
-        runCpp(vscode.workspace.workspaceFolders[0].uri.fsPath);
+        const config = vscode.workspace.getConfiguration('the-c++-button');
+
+        if (config.get("saveAllBeforeRunC++")) {
+            vscode.workspace.saveAll().then(() => {
+                runCpp(vscode.workspace.workspaceFolders[0].uri.fsPath);
+            });
+        }
+        else runCpp(vscode.workspace.workspaceFolders[0].uri.fsPath);
     });
 
     let exeJava = vscode.commands.registerCommand("the-c---button.java", () => {
