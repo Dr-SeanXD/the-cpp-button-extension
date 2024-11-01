@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.2.0] - 2024-10-31
+
+### Added
+- Add the icon for the extension.
+
+
 ## [1.1.5] - 2024-10-31
 
 ### Added

@@ -3,7 +3,8 @@
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
   "description": "An extension to compile + run multiple C++ and Java files",
-  "version": "1.1.5",
+  "version": "1.2.0",
+  "icon": "assets/Icon.jpeg",
   "engines": {
     "vscode": "^1.94.0"
   },
