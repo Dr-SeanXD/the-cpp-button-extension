@@ -81,6 +81,21 @@ function addHeaderComment() {
     });
 }
 
+function runPython() {
+    const editor = vscode.window.activeTextEditor;
+    if (!editor) {
+        vscode.window.showErrorMessage("No active text editor found!");
+        return;
+    }
+
+    const filePath = editor.document.uri.fsPath; // Get the path of the current file
+
+    const terminal = vscode.window.createTerminal("Python Terminal");
+    terminal.show(true);
+    terminal.sendText(`clear`);
+    terminal.sendText(`python3 "${filePath}"`); // Use python or python3 depending on your setup
+}
+
 function findJavaMain(folderPath) {
     const javaFiles = fs.readdirSync(folderPath).filter(file => file.endsWith('.java'));
 
@@ -178,19 +193,14 @@ function activate(context) {
             const filePath = editor.document.uri.fsPath; // Get the file path
             addHeaderComment(filePath); // Pass the file path to the function
         }
-    })
+    });
 
-    const myStatusBarItem = vscode.window.createStatusBarItem(vscode.StatusBarAlignment.Left, 100);
-    myStatusBarItem.text = 'Generate Header';
-    myStatusBarItem.command = 'the-c---button.generate-header';
-    myStatusBarItem.tooltip = 'Run my command';
-
-    // 4. Show the status bar item
-    myStatusBarItem.show();
+    let exePython = vscode.commands.registerCommand("the-c---button.python", runPython);
 
     context.subscriptions.push(disposable);
     context.subscriptions.push(exeJava);
     context.subscriptions.push(generateHeader);
+    context.subscriptions.push(exePython);
 }
 
 function deactivate() {}

@@ -3,16 +3,16 @@
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
   "description": "An extension to compile + run multiple C++ and Java files",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "icon": "assets/Icon.jpeg",
   "engines": {
     "vscode": "^1.94.0"
   },
   "main": "./extension.js",
   "activationEvents": [
-  "onCommand:the-c---button.cpp",
-  "onCommand:the-c---button.java",
-  "onCommand:the-c---button.generate-header"
+    "onCommand:the-c---button.cpp",
+    "onCommand:the-c---button.java",
+    "onCommand:the-c---button.generate-header"
   ],
   "contributes": {
     "commands": [
@@ -27,29 +27,38 @@
       {
         "command": "the-c---button.generate-header",
         "title": "📜 Generate Header"
+      },
+      {
+        "command": "the-c---button.python",
+        "title": "🚀 Run Python 🐍"
       }
     ],
     "configuration": {
-          "type": "object",
-          "title": "The C++ Button Configuration",
-          "properties": {
-              "the-c++-button.authorName": {
-                  "type": "string",
-                  "default": "Enter your name!",
-                  "description": "The author name to include in header comments."
-              },
-              "the-c++-button.saveAllBeforeRunJava": {
-                  "type": "boolean",
-                  "default": false,
-                  "description": "Automatically save all files before running the command 🚀 Run Java 💻."
-              },
-              "the-c++-button.saveAllBeforeRunC++": {
-                  "type": "boolean",
-                  "default": false,
-                  "description": "Automatically save all files before running the command 🚀 Run C++ 💻."
-              }
-          }
-      },
+      "type": "object",
+      "title": "The C++ Button Configuration",
+      "properties": {
+        "the-c++-button.authorName": {
+          "type": "string",
+          "default": "Enter your name!",
+          "description": "The author name to include in header comments."
+        },
+        "the-c++-button.saveAllBeforeRunJava": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically save all files before running the command 🚀 Run Java 💻."
+        },
+        "the-c++-button.saveAllBeforeRunC++": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically save all files before running the command 🚀 Run C++ 💻."
+        },
+        "the-c++-button.saveAllBeforeRunPython": {
+          "type": "boolean",
+          "default": false,
+          "description": "Automatically save all files before running the command 🚀 Run Python 🐍."
+        }
+      }
+    },
     "menus": {
       "editor/title": [
         {
@@ -61,6 +70,11 @@
           "command": "the-c---button.java",
           "when": "resourceExtname == .java",
           "group": "navigation"
+        },
+        {
+          "command": "the-c---button.python",
+          "when": "resourceExtname == .py",
+          "group": "navigation"
         }
       ]
     }
@@ -71,11 +85,16 @@
     "test": "vscode-test"
   },
   "devDependencies": {
-    "@types/vscode": "^1.94.0",
     "@types/mocha": "^10.0.9",
     "@types/node": "20.x",
-    "eslint": "^9.13.0",
+    "@types/vscode": "^1.94.0",
     "@vscode/test-cli": "^0.0.10",
-    "@vscode/test-electron": "^2.4.1"
+    "@vscode/test-electron": "^2.4.1",
+    "eslint": "^9.13.0"
+  },
+  "dependencies": {
+    "axios": "^1.7.7",
+    "dotenv": "^16.4.5",
+    "openai": "^4.70.2"
   }
 }

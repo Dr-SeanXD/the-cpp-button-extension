@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.3.0] - 2024-11-03
+
+### Added
+- Added the functionality to run python files with the execution button or the command.
+
+### Changed
+- Changed the README.md file to specify the new functionality in terms of Python.
+
+
 ## [1.2.0] - 2024-10-31
 
 ### Added

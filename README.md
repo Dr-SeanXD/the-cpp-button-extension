@@ -4,9 +4,11 @@
 
 ## Features
 
-- **Compile and Run C++ Files**: With a single click or command, compile all `.cpp` files in the current workspace and run the main program, saving all files before compiling.
+- **Compile and Run C++ Files**: With a single click or command, compile all `.cpp` files in the current workspace and run the main program, saving all files before compiling, which is configurable through settings.
 
-- **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program, saving all files before compiling. The compiled `.class` files will be stored in a "build" folder created in your workspace.
+- **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program, saving all files before compiling, which is configurable through settings. The compiled `.class` files will be stored in a "build" folder created in your workspace.
+
+- **Compile and Run Python File**: Execute the currently open Python file directly from the editor, saving the file before execution, which is configurable through settings.
 
 - **Custom Button**: Adds a custom button in the editor for `.cpp` and `.java` files, allowing fast access to compilation and execution.
 
@@ -29,6 +31,12 @@
 3. Use the Command Palette (Cmd+Shift+P or Ctrl+Shift+P) and search for 🚀 Run Java ☕ to compile and run your Java program.
 4. Alternatively, click the Run Java button in the editor title when viewing a `.java` file.
 
+### Python Code
+
+1. Open the Python file you want to execute in your VS Code workspace.
+2. Use the Command Palette (Cmd+Shift+P or Ctrl+Shift+P) and search for 🚀 Run Python 🐍 to execute the currently open Python file.
+3. Alternatively, click the Run Python button in the editor title when viewing a `.py` file.
+
 ### Adding Header Comments
 
 1. Open the file you want to add a header comment to.
@@ -44,5 +52,7 @@
 - **C++**: Ensure `g++` is installed and available in your PATH. This extension uses `g++` to compile C++ files.
 
 - **Java**: Ensure the Java Development Kit (JDK) is installed and available in your PATH. This extension requires the JDK to compile and run Java files.
+
+- **Python**: Install Python and ensure the `python3` command is available in your system's PATH.
 
 - **VS Code**: Version 1.94.0 or higher.
