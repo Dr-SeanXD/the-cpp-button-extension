@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.4.0] - 2024-11-06
+
+### Added
+- Added the functionality to show the run time and memory usage after each compilation and run.
+
+
 ## [1.3.0] - 2024-11-03
 
 ### Added

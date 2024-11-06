@@ -1,6 +1,6 @@
 # The C++ Button README
 
-🚀 The C++ Button is a simple VS Code extension that provides a quick way to compile and run all `.cpp` files and Java programs in your current workspace folder. Perfect for developers looking to speed up their workflow!
+🚀 The C++ Button is a simple VS Code extension that provides a quick way to compile and run all `.cpp` files, Python, and Java programs in your current workspace folder. Perfect for developers looking to speed up their workflow!
 
 ## Features
 
@@ -13,6 +13,8 @@
 - **Custom Button**: Adds a custom button in the editor for `.cpp` and `.java` files, allowing fast access to compilation and execution.
 
 - **Error Handling**: Displays compilation and runtime errors directly in VS Code.
+
+- **Running Time and Memory Usage**: Displays the run time and memory usage after each compilation and run. This can be disabled in the settings (enabled by default).
 
 - **Header Comment Generation**: Easily add a standardized header comment to your code files, including fields for author name, creation date, file name, project name, and a description.
 

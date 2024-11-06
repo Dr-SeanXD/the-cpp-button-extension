@@ -81,6 +81,32 @@ function addHeaderComment() {
     });
 }
 
+function measureRuntimeAndMemory(command, terminalName) {
+    const terminal = vscode.window.createTerminal(terminalName);
+    terminal.show(true);
+
+    const start = process.hrtime();
+
+    // Execute the command and wait for it to complete
+    terminal.sendText(`${command}`);
+
+    const config = vscode.workspace.getConfiguration('the-c++-button');
+    const time = config.get('showRunTimeAndMemoryUsage');
+    
+    if (time) {
+        // Use a timeout to allow the command to execute before measuring
+        setTimeout(() => {
+            const end = process.hrtime(start);
+            const executionTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2); // Convert to milliseconds
+            const memoryUsage = process.memoryUsage();
+            const memoryUsed = (memoryUsage.heapUsed / 1024 / 1024).toFixed(2); // Convert to MB
+
+            // Display the results in a VS Code notification
+            vscode.window.showInformationMessage(`Execution Time: ${executionTime} ms, Memory Used: ${memoryUsed} MB`);
+        }, 1000); // Adjust the timeout as needed
+    }
+}
+
 function runPython() {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
@@ -90,10 +116,7 @@ function runPython() {
 
     const filePath = editor.document.uri.fsPath; // Get the path of the current file
 
-    const terminal = vscode.window.createTerminal("Python Terminal");
-    terminal.show(true);
-    terminal.sendText(`clear`);
-    terminal.sendText(`python3 "${filePath}"`); // Use python or python3 depending on your setup
+    measureRuntimeAndMemory(`python3 "${filePath}"`, "Python Terminal");
 }
 
 function findJavaMain(folderPath) {
@@ -112,12 +135,7 @@ function findJavaMain(folderPath) {
 
 function runCpp(folderPath) {
 
-    const terminal = vscode.window.createTerminal("C++ Terminal");
-
-    terminal.show(true);
-    terminal.sendText(`clear`);
-    terminal.sendText(`g++ ${folderPath}/*.cpp`);
-    terminal.sendText(`./a.out`);
+    measureRuntimeAndMemory(`g++ ${folderPath}/*.cpp && ./a.out`, "C++ Terminal");
 }
 
 function runJava (folderPath) {
@@ -135,14 +153,7 @@ function runJava (folderPath) {
         fs.mkdirSync(buildFolderPath, { recursive: true });
     }
 
-    const terminal = vscode.window.createTerminal("Java Terminal");
-
-    terminal.show(true);
-    terminal.sendText(`clear`);
-    
-    terminal.sendText(`javac -d "${buildFolderPath}" ${folderPath}/*.java`);
-
-    terminal.sendText(`java -cp "${buildFolderPath}" ${mainClass}`);
+    measureRuntimeAndMemory(`javac -d "${buildFolderPath}" ${folderPath}/*.java && java -cp "${buildFolderPath}" ${mainClass}`, "Java Terminal");
 }
 
 function checkEditor() {
