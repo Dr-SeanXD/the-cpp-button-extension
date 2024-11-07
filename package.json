@@ -3,7 +3,7 @@
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
   "description": "An extension to compile + run multiple C++ and Java files",
-  "version": "1.4.0",
+  "version": "1.4.3",
   "icon": "assets/Icon.jpeg",
   "engines": {
     "vscode": "^1.94.0"
@@ -61,6 +61,11 @@
           "type": "boolean",
           "default": true,
           "description": "Show the run time and memory usage after each compilation and run."
+        },
+        "the-c++-button.clearTerminalBeforeExecution": {
+          "type": "boolean",
+          "default": false,
+          "description": "Clear the terminal for each compilation/execution."
         }
       }
     },
@@ -98,9 +103,5 @@
     "eslint": "^9.13.0"
   },
   "dependencies": {
-    "@tensorflow/tfjs-node": "^4.22.0",
-    "axios": "^1.7.7",
-    "dotenv": "^16.4.5",
-    "openai": "^4.70.2"
   }
 }

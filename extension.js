@@ -81,29 +81,40 @@ function addHeaderComment() {
     });
 }
 
+let terminal;
+
+function getOrCreateTerminal(name) {
+    if (!terminal || terminal.exitStatus) {
+        terminal = vscode.window.createTerminal(name);
+    }
+    const config = vscode.workspace.getConfiguration('the-c++-button');
+    const clear = config.get('clearTerminalBeforeExecution');
+    if (clear) terminal.sendText(`clear`);
+    terminal.show(true);
+    return terminal;
+}
+
 function measureRuntimeAndMemory(command, terminalName) {
-    const terminal = vscode.window.createTerminal(terminalName);
+    const terminal = getOrCreateTerminal(terminalName);
     terminal.show(true);
 
     const start = process.hrtime();
 
-    // Execute the command and wait for it to complete
     terminal.sendText(`${command}`);
 
     const config = vscode.workspace.getConfiguration('the-c++-button');
     const time = config.get('showRunTimeAndMemoryUsage');
     
     if (time) {
-        // Use a timeout to allow the command to execute before measuring
         setTimeout(() => {
             const end = process.hrtime(start);
-            const executionTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2); // Convert to milliseconds
+            const executionTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2); 
             const memoryUsage = process.memoryUsage();
-            const memoryUsed = (memoryUsage.heapUsed / 1024 / 1024).toFixed(2); // Convert to MB
+            const memoryUsed = (memoryUsage.heapUsed / 1024 / 1024).toFixed(2); 
 
             // Display the results in a VS Code notification
             vscode.window.showInformationMessage(`Execution Time: ${executionTime} ms, Memory Used: ${memoryUsed} MB`);
-        }, 1000); // Adjust the timeout as needed
+        }, 1000);
     }
 }
 
@@ -153,7 +164,29 @@ function runJava (folderPath) {
         fs.mkdirSync(buildFolderPath, { recursive: true });
     }
 
-    measureRuntimeAndMemory(`javac -d "${buildFolderPath}" ${folderPath}/*.java && java -cp "${buildFolderPath}" ${mainClass}`, "Java Terminal");
+    const compile = `javac -d "${buildFolderPath}" ${folderPath}/*.java`;
+    const run = `java -cp "${buildFolderPath}" ${mainClass}`;
+
+    const terminal = getOrCreateTerminal("Java Terminal");
+    terminal.show(true);
+
+    const start = process.hrtime();
+
+    terminal.sendText(compile);
+
+    setTimeout(() => {
+        terminal.sendText(run);
+
+        setTimeout(() => {
+            const end = process.hrtime(start);
+            const exeTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2);
+            const memUsage = process.memoryUsage();
+            const memUsed = (memUsage.heapUsed / 1024 / 1024).toFixed(2);
+
+            vscode.window.showInformationMessage(`Execution Time: ${exeTime} ms, Memory
+                                                  Used: ${memUsed} MB`);
+        }, 2000);
+    }, 2000);
 }
 
 function checkEditor() {

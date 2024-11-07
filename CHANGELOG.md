@@ -1,5 +1,23 @@
 # Changelog
 
+## [1.4.3] - 2024-11-06
+
+### Changed
+- Prevent creating multiple terminals from multiple compilations/executions.
+- Let users choose to clear the terminal before each compilation/execution or not (int the setting).
+
+
+## [1.4.2] - 2024-11-06
+
+### Changed
+- Removed unnecessary packages/dependencies.
+
+## [1.4.1] - 2024-11-06
+
+### Changed
+- Fixed the issue of not getting running time and memory usage after pressing the button.
+
+
 ## [1.4.0] - 2024-11-06
 
 ### Added
