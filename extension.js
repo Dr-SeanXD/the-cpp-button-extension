@@ -108,7 +108,7 @@ function measureRuntimeAndMemory(command, terminalName) {
     if (time) {
         setTimeout(() => {
             const end = process.hrtime(start);
-            const executionTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2); 
+            const executionTime = (end[0] * 1000 + end[1] / 1e6).toFixed(2);
             const memoryUsage = process.memoryUsage();
             const memoryUsed = (memoryUsage.heapUsed / 1024 / 1024).toFixed(2); 
 
@@ -145,8 +145,22 @@ function findJavaMain(folderPath) {
 }
 
 function runCpp(folderPath) {
-
-    measureRuntimeAndMemory(`g++ ${folderPath}/*.cpp && ./a.out`, "C++ Terminal");
+    const outputFile = process.platform === "win32" ? "a.exe" : "a.out";
+    if (process.platform === "win32") {
+        // Compile step
+        const compileCommand = `g++ ${folderPath}/*.cpp -o ${outputFile}`;
+        measureRuntimeAndMemory(compileCommand, "C++ Terminal");
+        
+        // Run the executable after a short delay to allow compilation to complete
+        setTimeout(() => {
+            measureRuntimeAndMemory(outputFile, "C++ Terminal");
+        }, 500);
+    } else {
+        // On non-Windows platforms, chain compile and run with &&
+        const runCommand = `./${outputFile}`;
+        const compileAndRun = `g++ ${folderPath}/*.cpp -o ${outputFile} && ${runCommand}`;
+        measureRuntimeAndMemory(compileAndRun, "C++ Terminal");
+    }
 }
 
 function runJava (folderPath) {

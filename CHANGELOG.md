@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.5.1] - 2025-03-29
+
+### Changed
+- Fix the issue where C++ cannot be run on Windows machines.
+
+## [1.5.0] - 2025-03-14
+
+### Changed
+- For Windows users, the button when executing C++ will now work since the command will be changed to ./a.exe if the machine is on Windows. On a Mac, the command is ./a.out.
+
 ## [1.4.3] - 2024-11-06
 
 ### Changed
