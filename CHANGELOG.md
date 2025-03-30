@@ -1,5 +1,10 @@
 # Changelog
 
+## [1.5.2] - 2025-03-29
+
+### Changed
+- Fix the issue where C++ cannot be run on Windows machines.
+
 ## [1.5.1] - 2025-03-29
 
 ### Changed

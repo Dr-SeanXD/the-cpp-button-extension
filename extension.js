@@ -153,7 +153,7 @@ function runCpp(folderPath) {
         
         // Run the executable after a short delay to allow compilation to complete
         setTimeout(() => {
-            measureRuntimeAndMemory(outputFile, "C++ Terminal");
+            measureRuntimeAndMemory("./a.exe", "C++ Terminal");
         }, 500);
     } else {
         // On non-Windows platforms, chain compile and run with &&
