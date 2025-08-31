@@ -127,7 +127,7 @@ function runPython() {
 
     const filePath = editor.document.uri.fsPath; // Get the path of the current file
 
-    measureRuntimeAndMemory(`python3 "${filePath}"`, "Python Terminal");
+    measureRuntimeAndMemory(`/usr/bin/python3 "${filePath}"`, "Python Terminal");
 }
 
 function findJavaMain(folderPath) {
@@ -212,12 +212,36 @@ function checkEditor() {
     return true;
 }
 
+function runTypeScript() {
+    // Try to detect package.json directory
+    const workspaceFolders = vscode.workspace.workspaceFolders;
+    let pkgDir = null;
+    if (workspaceFolders && workspaceFolders.length > 0) {
+        const rootPath = workspaceFolders[0].uri.fsPath;
+        const pkgPath = path.join(rootPath, "package.json");
+        if (fs.existsSync(pkgPath)) {
+            pkgDir = rootPath;
+        }
+    }
+    if (pkgDir) {
+        const terminal = getOrCreateTerminal("TypeScript Terminal");
+        setTimeout(() => {
+            terminal.sendText(`cd "${pkgDir}"`);
+        }, 500);
+        setTimeout(() => {
+            terminal.sendText("npm run start");
+        }, 500);
+    } else {
+        measureRuntimeAndMemory("npm run start", "TypeScript Terminal");
+    }
+}
+
 function activate(context) {
 
     console.log('Congratulations, your extension "The C++ Button" is now active!');
 
     let disposable = vscode.commands.registerCommand("the-c---button.cpp", () => {
-        if (!checkEditor) return;
+        if (!checkEditor()) return;
 
         const config = vscode.workspace.getConfiguration('the-c++-button');
 
@@ -230,7 +254,7 @@ function activate(context) {
     });
 
     let exeJava = vscode.commands.registerCommand("the-c---button.java", () => {
-        if (!checkEditor) return;
+        if (!checkEditor()) return;
 
         const config = vscode.workspace.getConfiguration('the-c++-button');
 
@@ -255,10 +279,13 @@ function activate(context) {
 
     let exePython = vscode.commands.registerCommand("the-c---button.python", runPython);
 
+    let exeTypeScript = vscode.commands.registerCommand("the-c---button.typescript", runTypeScript);
+
     context.subscriptions.push(disposable);
     context.subscriptions.push(exeJava);
     context.subscriptions.push(generateHeader);
     context.subscriptions.push(exePython);
+    context.subscriptions.push(exeTypeScript);
 }
 
 function deactivate() {}

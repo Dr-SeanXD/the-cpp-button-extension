@@ -3,7 +3,7 @@
   "publisher": "Dr-SeanXD",
   "displayName": "The C++ Button",
   "description": "An extension to compile + run multiple C++ and Java files",
-  "version": "1.5.2",
+  "version": "1.6.0",
   "icon": "assets/Icon.jpeg",
   "engines": {
     "vscode": "^1.94.0"
@@ -31,6 +31,10 @@
       {
         "command": "the-c---button.python",
         "title": "🚀 Run Python 🐍"
+      },
+      {
+        "command": "the-c---button.typescript",
+        "title": "🚀 Run TypeScript 📘"
       }
     ],
     "configuration": {
@@ -85,6 +89,11 @@
           "command": "the-c---button.python",
           "when": "resourceExtname == .py",
           "group": "navigation"
+        },
+        {
+          "command": "the-c---button.typescript",
+          "when": "resourceExtname == .ts",
+          "group": "navigation"
         }
       ]
     }
@@ -103,5 +112,7 @@
     "eslint": "^9.13.0"
   },
   "dependencies": {
+    "@vscode/vsce": "^3.6.0",
+    "vsce": "^2.15.0"
   }
 }

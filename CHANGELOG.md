@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.6.0] - 2025-08-31
+
+### Added
+- Add the ability to "execute" Typescript projects by running `npm run start` on the terminal.
+
+## [1.5.3] - 2025-04-18
+
+### Changed
+- Fix the issue where Python cannot be run.
+
 ## [1.5.2] - 2025-03-29
 
 ### Changed

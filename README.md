@@ -9,6 +9,8 @@
 - **Compile and Run Java Programs**: Automatically detects the main Java class, compiles all `.java` files, and runs the main program, saving all files before compiling, which is configurable through settings. The compiled `.class` files will be stored in a "build" folder created in your workspace.
 
 - **Compile and Run Python File**: Execute the currently open Python file directly from the editor, saving the file before execution, which is configurable through settings.
+  
+- **Run TypeScript**: Run `npm run start` for typescript projects.
 
 - **Custom Button**: Adds a custom button in the editor for `.cpp` and `.java` files, allowing fast access to compilation and execution.
 
